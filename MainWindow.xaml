@@ -5,46 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DroneServiceApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="537" Width="590">
-    <Grid Margin="0,0,0,13">
+        Title="MainWindow" Height="705" Width="866">
+    <Grid Margin="0,0,0,-6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Client Name" HorizontalAlignment="Left" Margin="24,16,0,0" VerticalAlignment="Top" Height="26" Width="75"/>
-        <TextBox x:Name="txtClientName" HorizontalAlignment="Left" Margin="24,42,0,0" TextWrapping="Wrap" Text="Example" VerticalAlignment="Top" Width="129" Height="27" FontSize="16"/>
-        <Label Content="Drone Model" HorizontalAlignment="Left" Margin="162,16,0,0" VerticalAlignment="Top" Height="26" Width="80"/>
-        <TextBox x:Name="txtServiceProblem" HorizontalAlignment="Left" Margin="309,42,0,0" TextWrapping="Wrap" AcceptsReturn="True" Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." VerticalAlignment="Top" Width="260" Height="151"/>
-        <Label Content="Service Problem" HorizontalAlignment="Left" Margin="309,16,0,0" VerticalAlignment="Top" Height="26" Width="96" RenderTransformOrigin="0.76,0.463"/>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="24,238,396,52">
+        <Label Content="Client Name" HorizontalAlignment="Left" Margin="40,30,0,0" VerticalAlignment="Top" Height="26" Width="75"/>
+        <TextBox x:Name="txtClientName" HorizontalAlignment="Left" Margin="40,56,0,0" TextWrapping="Wrap" Text="Example" VerticalAlignment="Top" Width="129" Height="27" FontSize="16"/>
+        <Label Content="Drone Model" HorizontalAlignment="Left" Margin="178,30,0,0" VerticalAlignment="Top" Height="26" Width="80"/>
+        <TextBox x:Name="txtServiceProblem" HorizontalAlignment="Left" Margin="325,56,0,0" TextWrapping="Wrap" AcceptsReturn="True" Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." VerticalAlignment="Top" Width="500" Height="151"/>
+        <Label Content="Service Problem" HorizontalAlignment="Left" Margin="325,30,0,0" VerticalAlignment="Top" Height="26" Width="96" RenderTransformOrigin="0.76,0.463"/>
+        <ListView x:Name="lvRegular" ItemsSource="{Binding drone}" Margin="43,252,0,0" HorizontalAlignment="Left" Width="542" Height="148" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Client Name" DisplayMemberBinding="{Binding getClientName}"/>
+                    <GridViewColumn Header="Drone Model" DisplayMemberBinding="{Binding getDroneModel}"/>
+                    <GridViewColumn Header="Service Problem" DisplayMemberBinding="{Binding getServiceProblem}"/>
+                    <GridViewColumn Header="Service Cost" DisplayMemberBinding="{Binding getServiceCost}"/>
+                    <GridViewColumn Header="Service Tag" DisplayMemberBinding="{Binding getServiceTag}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel Margin="24,157,0,0" Orientation="Vertical" Height="37" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74">
-            <RadioButton Content="Regular" GroupName="servicePriority" RenderTransformOrigin="0.742,1.874" Height="15" Width="59"/>
-            <RadioButton Content="Express" GroupName="servicePriority" Height="15" Width="58"/>
+        <StackPanel Margin="182,184,0,0" Orientation="Vertical" Height="37" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74">
+            <RadioButton x:Name="rbRegular" Content="Regular" GroupName="servicePriority" RenderTransformOrigin="0.742,1.874" Height="15" Width="59"/>
+            <RadioButton x:Name="rbExpress" Content="Express" GroupName="servicePriority" Height="15" Width="58"/>
         </StackPanel>
-        <TextBox x:Name="txtServiceCost" HorizontalAlignment="Left" Margin="128,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="18"/>
-        <Label Content="Service Cost" HorizontalAlignment="Left" Margin="128,131,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
-        <ListBox Margin="398,238,21,52"/>
-        <Label Content="Service Tag" HorizontalAlignment="Left" Margin="24,74,0,0" VerticalAlignment="Top" Height="26" Width="69" RenderTransformOrigin="0.5,0.5"/>
-        <Label Content="Service Priority" HorizontalAlignment="Left" Margin="24,131,0,0" VerticalAlignment="Top" Height="26" Width="88"/>
-        <TextBox x:Name="txtDroneModel" HorizontalAlignment="Left" Margin="166,42,0,0" TextWrapping="Wrap" Text="Example" VerticalAlignment="Top" Width="129" Height="27" FontSize="16"/>
-        <TextBox x:Name="txtServiceTag" HorizontalAlignment="Left" Margin="24,96,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="75" Height="27" FontSize="16"/>
-        <Button x:Name="btnServiceTagInc" Content="+" HorizontalAlignment="Left" Margin="99,96,0,0" VerticalAlignment="Top" Height="27" Width="27" RenderTransformOrigin="1.361,0.446" Click="btnServiceTagInc_Click"/>
-        <Button x:Name="btnServiceTagDec" Content="-" HorizontalAlignment="Left" Margin="126,96,0,0" VerticalAlignment="Top" Height="27" Width="27" Click="btnServiceTagDec_Click"/>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="210,238,210,52">
+        <TextBox x:Name="txtServiceCost" HorizontalAlignment="Left" Margin="182,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Width="129" Height="27" FontSize="16"/>
+        <Label Content="Service Cost" HorizontalAlignment="Left" Margin="181,88,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
+        <ListBox Margin="608,252,0,0" HorizontalAlignment="Left" Width="217" Height="356" VerticalAlignment="Top"/>
+        <Label Content="Service Tag" HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top" Height="26" Width="69" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="Service Priority" HorizontalAlignment="Left" Margin="182,153,0,0" VerticalAlignment="Top" Height="26" Width="88"/>
+        <TextBox x:Name="txtDroneModel" HorizontalAlignment="Left" Margin="182,56,0,0" TextWrapping="Wrap" Text="Example" VerticalAlignment="Top" Width="129" Height="27" FontSize="16"/>
+        <TextBox x:Name="txtServiceTag" HorizontalAlignment="Left" Margin="40,110,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="75" Height="27" FontSize="16"/>
+        <Button x:Name="btnServiceTagInc" Content="+" HorizontalAlignment="Left" Margin="115,110,0,0" VerticalAlignment="Top" Height="27" Width="27" RenderTransformOrigin="1.361,0.446" Click="btnServiceTagInc_Click"/>
+        <Button x:Name="btnServiceTagDec" Content="-" HorizontalAlignment="Left" Margin="142,110,0,0" VerticalAlignment="Top" Height="27" Width="27" Click="btnServiceTagDec_Click"/>
+        <ListView x:Name="lvExpress" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="41,460,0,0" HorizontalAlignment="Left" Width="542" Height="148" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Client Name" DisplayMemberBinding="{Binding clientName}"/>
+                    <GridViewColumn Header="Drone Model" DisplayMemberBinding="{Binding droneModel}"/>
+                    <GridViewColumn Header="Service Problem" DisplayMemberBinding="{Binding serviceProblem}"/>
+                    <GridViewColumn Header="Service Tag" DisplayMemberBinding="{Binding serviceTag}"/>
+                    <GridViewColumn Header="Service Cost" DisplayMemberBinding="{Binding serviceCost}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="ADD" HorizontalAlignment="Left" Margin="25,201,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Button Content="Complete" HorizontalAlignment="Left" Margin="25,465,0,0" FontSize="18" Height="33" VerticalAlignment="Top"/>
+        <Button Content="ADD" HorizontalAlignment="Left" Margin="41,166,0,0" VerticalAlignment="Top" FontSize="18" Width="51" Click="Button_Click"/>
+        <Button Content="Complete" HorizontalAlignment="Left" Margin="41,405,0,0" FontSize="18" Height="33" VerticalAlignment="Top"/>
+        <Button Content="Complete" HorizontalAlignment="Left" Margin="43,613,0,0" FontSize="18" Height="33" VerticalAlignment="Top"/>
 
-    </Grid>        
+    </Grid>
 
 </Window>
