@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,21 +20,39 @@ namespace DroneServiceApplication
         private double serviceCost;
         private int serviceTag;
 
-        public void displayDrone()
+        public string displayDrone()
         {
-
+            return $"{clientName} {serviceCost}";
+        }
+        public string ClientName
+        {
+            get { return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(clientName.ToLower()); }
+            set { clientName = value; }
         }
 
-        public string getClientName() { return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(clientName.ToLower()); }
-        public string getDroneModel() { return droneModel; }
-        public string getServiceProblem() { return char.ToUpper(serviceProblem[0]) + serviceProblem.Substring(1).ToLower(); }
-        public string getServiceCost() { return serviceCost.ToString(); }
-        public int getServiceTag() { return serviceTag; }
+        public string DroneModel
+        {
+            get { return droneModel; }
+            set { droneModel = value; }
+        }
 
-        public void setClientName(string input) { clientName = input; }
-        public void setDroneModel(string input) { droneModel = input; }
-        public void setServiceProblem(string input) { serviceProblem = input; }
-        public void setServiceCost(double input) { serviceCost = input; }
-        public void setServiceTag(int input) { serviceTag = input; }
+        public string ServiceProblem
+        {
+            get { return char.ToUpper(serviceProblem[0]) + serviceProblem.Substring(1).ToLower(); }
+            set { serviceProblem = value; }
+        }
+
+        public double ServiceCost
+        {
+            get { return serviceCost; }
+            set { serviceCost = value; }
+        }
+
+        public int ServiceTag
+        {
+            get { return serviceTag; }
+            set { serviceTag = value; }
+        }
+
     }
 }
