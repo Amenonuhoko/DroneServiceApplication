@@ -32,7 +32,7 @@
         </StackPanel>
         <TextBox x:Name="txtServiceCost" HorizontalAlignment="Left" Margin="34,174,0,0" TextWrapping="Wrap" Text="100.00" VerticalAlignment="Top"  Width="135" Height="40" FontSize="22" PreviewTextInput="txtServiceCost_PreviewTextInput"/>
         <Label Content="Service Cost" HorizontalAlignment="Left" Margin="34,148,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
-        <ListBox x:Name="lbFinishedList" Margin="608,300,0,0" HorizontalAlignment="Left" Width="217" Height="394" VerticalAlignment="Top"/>
+        <ListBox x:Name="lbFinishedList" Margin="608,300,0,0" HorizontalAlignment="Left" Width="217" Height="394" VerticalAlignment="Top" MouseDoubleClick="lbFinishedList_MouseDoubleClick"/>
         <Label Content="Service Tag" HorizontalAlignment="Left" Margin="35,214,0,0" VerticalAlignment="Top" Height="26" Width="68" RenderTransformOrigin="0.5,0.5"/>
         <Label Content="Service Priority" HorizontalAlignment="Left" Margin="192,83,0,0" VerticalAlignment="Top" Height="26" Width="88"/>
         <TextBox x:Name="txtDroneModel" HorizontalAlignment="Left" Margin="34,109,0,0" TextWrapping="Wrap" Text="Example" VerticalAlignment="Top" Width="135" Height="40" FontSize="22"/>
