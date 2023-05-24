@@ -46,27 +46,33 @@ namespace DroneServiceApplication
         public void AddNewItem()
         {
             // Create new drone object to fill
-            Drone newDrone = new Drone();
-            newDrone.ClientName = txtClientName.Text;
-            newDrone.DroneModel = txtDroneModel.Text;
-            newDrone.ServiceProblem = txtServiceProblem.Text;
-            newDrone.ServiceCost = double.Parse(txtServiceCost.Text);
-            newDrone.ServiceTag = int.Parse(txtServiceTag.Text);
-            // Check priority and add to appropriate queue
-            // Refresh Display after queue
-            if (GetServicePriority() == 1)
+            if (!string.IsNullOrEmpty(txtClientName.Text) && !string.IsNullOrEmpty(txtDroneModel.Text) && !string.IsNullOrEmpty(txtServiceProblem.Text))
             {
-                RegularService.Enqueue(newDrone);
-                DisplayRegularService();
-            } else if (GetServicePriority() == 2)
-            {
-                // 6.6	Before a new service item is added to the Express Queue the service cost must be increased by 15%.
-                newDrone.ServiceCost = double.Parse(txtServiceTag.Text) * 1.15;
-                ExpressService.Enqueue(newDrone);
-                DisplayExpressService();
-            }
-            // Clear fields after adding
-            ClearFields();
+                Drone newDrone = new Drone();
+                newDrone.ClientName = txtClientName.Text;
+                newDrone.DroneModel = txtDroneModel.Text;
+                newDrone.ServiceProblem = txtServiceProblem.Text;
+                newDrone.ServiceCost = double.Parse(txtServiceCost.Text);
+                newDrone.ServiceTag = int.Parse(txtServiceTag.Text);
+                // Check priority and add to appropriate queue
+                // Refresh Display after queue
+                if (GetServicePriority() == 1)
+                {
+                    RegularService.Enqueue(newDrone);
+                    DisplayRegularService();
+                    txtServiceTag.Text = (int.Parse(txtServiceTag.Text) + 10).ToString();
+                }
+                else if (GetServicePriority() == 2)
+                {
+                    // 6.6	Before a new service item is added to the Express Queue the service cost must be increased by 15%.
+                    newDrone.ServiceCost = Math.Round(double.Parse(txtServiceTag.Text) * 1.15, 2);
+                    ExpressService.Enqueue(newDrone);
+                    DisplayExpressService();
+                    txtServiceTag.Text = (int.Parse(txtServiceTag.Text) + 10).ToString();
+                }
+                // Clear fields after adding
+                ClearFields();
+            }           
         }
         // Add logic to button
         private void Button_Click(object sender, RoutedEventArgs e)
