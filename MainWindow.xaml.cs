@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Security.Policy;
@@ -53,7 +54,10 @@ namespace DroneServiceApplication
                 newDrone.DroneModel = txtDroneModel.Text;
                 newDrone.ServiceProblem = txtServiceProblem.Text;
                 newDrone.ServiceCost = double.Parse(txtServiceCost.Text);
-                newDrone.ServiceTag = int.Parse(txtServiceTag.Text);
+                if (!int.TryParse(txtServiceTag.Text, out int serviceTag))
+                {
+                    return; 
+                }
                 // Check priority and add to appropriate queue
                 // Refresh Display after queue
                 if (GetServicePriority() == 1)
@@ -69,6 +73,9 @@ namespace DroneServiceApplication
                     ExpressService.Enqueue(newDrone);
                     DisplayExpressService();
                     txtServiceTag.Text = (int.Parse(txtServiceTag.Text) + 10).ToString();
+                } else
+                {
+                    Debug.WriteLine("No inputs");
                 }
                 // Clear fields after adding
                 ClearFields();

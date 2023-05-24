@@ -44,9 +44,9 @@
                 <GridView>
                     <GridViewColumn Header="Client Name" DisplayMemberBinding="{Binding Path=ClientName}"/>
                     <GridViewColumn Header="Drone Model" DisplayMemberBinding="{Binding Path=DroneModel}"/>
-                    <GridViewColumn Header="Service Problem" DisplayMemberBinding="{Binding Path=ServiceProblem}"/>
                     <GridViewColumn Header="Service Cost" DisplayMemberBinding="{Binding Path=ServiceCost}"/>
                     <GridViewColumn Header="Service Tag" DisplayMemberBinding="{Binding Path=ServiceTag}"/>
+                    <GridViewColumn Header="Service Problem" DisplayMemberBinding="{Binding Path=ServiceProblem}"/>
                 </GridView>
             </ListView.View>
         </ListView>
