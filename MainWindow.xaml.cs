@@ -73,13 +73,14 @@ namespace DroneServiceApplication
                     ExpressService.Enqueue(newDrone);
                     DisplayExpressService();
                     txtServiceTag.Text = (int.Parse(txtServiceTag.Text) + 10).ToString();
-                } else
-                {
-                    Debug.WriteLine("No inputs");
                 }
                 // Clear fields after adding
                 ClearFields();
-            }           
+            }
+            else
+            {
+                MessageBox.Show("One or more input fields missing", "Warning", MessageBoxButton.OK);
+            }
         }
         // Add logic to button
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -211,6 +212,7 @@ namespace DroneServiceApplication
         private void DisplayFinishedList()
         {
             // Display from data
+            lbFinishedList.Items.Clear();
             foreach (var items in FinishedList)
             {
                 lbFinishedList.Items.Add(items.displayDrone());
